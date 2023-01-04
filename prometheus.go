@@ -229,7 +229,7 @@ func cleanBackendName(name string) string {
 	if strings.HasPrefix(name, "reload_") {
 		dot := strings.Index(name, ".")
 		if dot != -1 {
-			name = name[dot + 1:]
+			name = name[dot+1:]
 		}
 	}
 
@@ -312,6 +312,12 @@ func computePrometheusInfo(vName, vGroup, vIdentifier, vDescription string) (nam
 			}
 		}
 	}
+
+	labelKeys, labelValues = append(labelKeys, "appId"), append(labelValues, "kjs.varnish.nf.inner")
+	labelKeys, labelValues = append(labelKeys, "instance"), append(labelValues, "kjs.varnish.nf.inner.0")
+	labelKeys, labelValues = append(labelKeys, "ip"), append(labelValues, "10.132.71.106")
+	labelKeys, labelValues = append(labelKeys, "port"), append(labelValues, "8000")
+
 	return name, description, labelKeys, labelValues
 }
 
